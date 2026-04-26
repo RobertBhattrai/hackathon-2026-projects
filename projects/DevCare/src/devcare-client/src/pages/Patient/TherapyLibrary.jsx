@@ -28,6 +28,21 @@ function TherapyLibraryPage() {
     { id: 6, name: 'Advanced Balance', injury: 'ACL Recovery', difficulty: 'Advanced', duration: '10 mins', reps: 'Circuit' },
   ]
 
+  const difficultyStyles = {
+    Beginner: {
+      backgroundColor: 'var(--color-success-soft)',
+      color: 'var(--color-success)'
+    },
+    Intermediate: {
+      backgroundColor: 'var(--color-accent-soft)',
+      color: 'var(--color-accent)'
+    },
+    Advanced: {
+      backgroundColor: 'var(--color-danger-soft)',
+      color: 'var(--color-danger)'
+    }
+  }
+
   return (
     <div className="animate-fade-in">
       {/* Header */}
@@ -73,11 +88,12 @@ function TherapyLibraryPage() {
                       <div className="space-y-2 mb-4">
                         <div className="flex justify-between">
                           <span className="text-xs text-[var(--color-text-muted)]">Difficulty</span>
-                          <span className={`text-xs font-semibold px-2 py-1 rounded-full ${
-                            exercise.difficulty === 'Beginner' ? 'bg-[var(--color-success)] bg-opacity-20 text-[var(--color-success)]' :
-                            exercise.difficulty === 'Intermediate' ? 'bg-[var(--color-accent)] bg-opacity-20 text-[var(--color-accent)]' :
-                            'bg-[var(--color-danger)] bg-opacity-20 text-[var(--color-danger)]'
-                          }`}>{exercise.difficulty}</span>
+                          <span
+                            className="text-xs font-semibold px-2 py-1 rounded-full"
+                            style={difficultyStyles[exercise.difficulty] ?? { backgroundColor: 'var(--color-border)', color: 'var(--color-text)' }}
+                          >
+                            {exercise.difficulty}
+                          </span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-xs text-[var(--color-text-muted)]">Duration</span>
